@@ -30,7 +30,7 @@ public class DemoJob extends Job
     public static void scheduleSimple ()
     {
         new JobRequest.Builder(DemoJob.JOB_TAG)
-                .setExecutionWindow(TimeUnit.SECONDS.toMillis(2), TimeUnit.SECONDS.toMillis(5))
+                .setExecutionWindow(TimeUnit.MINUTES.toMillis(2), TimeUnit.MINUTES.toMillis(5))
                 .build()
                 .schedule();
     }

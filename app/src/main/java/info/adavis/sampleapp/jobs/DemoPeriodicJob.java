@@ -34,6 +34,7 @@ public class DemoPeriodicJob extends Job
         new JobRequest.Builder(DemoPeriodicJob.JOB_TAG)
                 .setPeriodic(JobRequest.MIN_INTERVAL)
                 .setExtras(extras)
+                .setUpdateCurrent(true)
                 .setRequiredNetworkType(JobRequest.NetworkType.CONNECTED)
                 .setRequirementsEnforced(true)
                 .build()
