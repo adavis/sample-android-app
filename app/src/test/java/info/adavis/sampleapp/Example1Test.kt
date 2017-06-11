@@ -11,7 +11,7 @@ import org.junit.Test
 import javax.inject.Singleton
 
 /**
- * Example that shows an String for the Map key
+ * Example that shows using a String for the Map key
  */
 @Module
 class Test1Module {
