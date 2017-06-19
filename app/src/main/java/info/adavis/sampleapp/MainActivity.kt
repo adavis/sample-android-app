@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(
-                            { posts -> toast("There are: ${posts.flatten().size} posts") },
+                            { posts -> toast("There are: ${posts.size} posts") },
                             { ex -> Timber.e(ex, "there was an error processing the request") }
                     )
         }
@@ -57,10 +57,12 @@ class MainActivity : AppCompatActivity() {
                 .take(3)
     }
 
-    fun getPostsForFirstThreeUsers(): Single<List<List<Post>>> {
+    fun getPostsForFirstThreeUsers(): Single<MutableList<Post>> {
         return getFirstThreeUsers()
                 .flatMapSingle { api.getUsersPosts(it.id) }
                 .doOnNext { Timber.i("number of posts: ${it.size}") }
+                .flatMapIterable { it }
+                .doOnNext { Timber.i("the post: $it") }
                 .toList()
     }
 }
