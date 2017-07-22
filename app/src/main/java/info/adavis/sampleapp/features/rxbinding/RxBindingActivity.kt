@@ -9,7 +9,6 @@ import info.adavis.sampleapp.R
 import info.adavis.sampleapp.data.Injector.getApi
 import info.adavis.sampleapp.data.SampleAPI
 import info.adavis.sampleapp.data.User
-import io.reactivex.BackpressureStrategy
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -34,7 +33,6 @@ class RxBindingActivity : AppCompatActivity() {
         api = getApi()
 
         disposable = myButton.clicks()
-                .toFlowable(BackpressureStrategy.LATEST)
                 .flatMapSingle { getAllUsers() }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
