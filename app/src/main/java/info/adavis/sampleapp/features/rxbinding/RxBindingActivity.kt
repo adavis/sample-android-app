@@ -37,7 +37,7 @@ class RxBindingActivity : AppCompatActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         this::handleUsers,
-                        { ex -> Timber.e(ex, "there was an error processing the request") }
+                        this::handleError
                 )
     }
 
@@ -61,6 +61,13 @@ class RxBindingActivity : AppCompatActivity() {
             }
             usersText.text = toString()
         }
+    }
+
+    fun handleError(t: Throwable) {
+        toast("Unable to retrieve users")
+
+        usersText.text = ""
+        Timber.e(t, "there was an error processing the request")
     }
 
 }
