@@ -15,7 +15,6 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.jetbrains.anko.toast
 import timber.log.Timber
-import io.reactivex.Observable.fromIterable as fromObservableIterable
 
 class RxBindingActivity : AppCompatActivity() {
 
@@ -33,6 +32,7 @@ class RxBindingActivity : AppCompatActivity() {
         api = getApi()
 
         disposable = myButton.clicks()
+                .observeOn(Schedulers.io())
                 .flatMapSingle { getAllUsers() }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -49,6 +49,7 @@ class RxBindingActivity : AppCompatActivity() {
     fun getAllUsers(): Single<List<User>> {
         return api.getUsers()
                 .subscribeOn(Schedulers.io())
+                .onErrorResumeNext(Single.just(emptyList()))
                 .doOnSuccess { Timber.i("users: $it") }
     }
 
