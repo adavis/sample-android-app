@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Sample App</string>
+    <string name="permissions_rationale">We need the permission</string>
+    <string name="ok">OK</string>
 </resources>
