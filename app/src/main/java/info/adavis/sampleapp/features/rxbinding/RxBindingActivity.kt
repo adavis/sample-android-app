@@ -30,6 +30,10 @@ class RxBindingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_rxbinding)
 
         api = getApi()
+    }
+
+    override fun onResume() {
+        super.onResume()
 
         disposable = myButton.clicks()
                 .observeOn(Schedulers.io())
@@ -41,9 +45,9 @@ class RxBindingActivity : AppCompatActivity() {
                 )
     }
 
-    override fun onDestroy() {
+    override fun onPause() {
         disposable?.dispose()
-        super.onDestroy()
+        super.onPause()
     }
 
     fun getAllUsers(): Single<List<User>> {
