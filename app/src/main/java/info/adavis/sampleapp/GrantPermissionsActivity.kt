@@ -31,25 +31,24 @@ class GrantPermissionsActivity : AppCompatActivity() {
         if (hasCallPhonePermission()) {
             makeCall()
         } else {
-            if (shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
+            if (shouldShowRequestPermissionRationale(this, PHONE_PERMISSION)) {
 
                 Snackbar.make(rootView, R.string.permissions_rationale, Snackbar.LENGTH_INDEFINITE)
                         .setAction(R.string.ok) {
                             requestPermissions(this,
-                                               arrayOf(Manifest.permission.CALL_PHONE),
+                                               arrayOf(PHONE_PERMISSION),
                                                PERMISSIONS_REQ_CODE)
                         }
                         .show()
 
             } else {
-                requestPermissions(this, arrayOf(Manifest.permission.CALL_PHONE),
-                                   PERMISSIONS_REQ_CODE)
+                requestPermissions(this, arrayOf(PHONE_PERMISSION), PERMISSIONS_REQ_CODE)
             }
         }
     }
 
     private fun hasCallPhonePermission(): Boolean {
-        return (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
+        return (ContextCompat.checkSelfPermission(this, PHONE_PERMISSION)
                     == PackageManager.PERMISSION_GRANTED)
     }
 
@@ -77,6 +76,8 @@ class GrantPermissionsActivity : AppCompatActivity() {
 
     companion object {
         private val PERMISSIONS_REQ_CODE = 1
+        private val PHONE_PERMISSION = Manifest.permission.CALL_PHONE
+
         val PHONE_NUMBER: Uri = Uri.parse("tel:5551231234")
     }
 }
