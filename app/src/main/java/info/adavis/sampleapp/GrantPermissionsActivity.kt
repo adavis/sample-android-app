@@ -17,8 +17,8 @@ import timber.log.Timber
 
 class GrantPermissionsActivity : AppCompatActivity() {
 
-    val myButton: Button by lazy { findViewById(R.id.button) as Button }
-    val rootView: View by lazy { findViewById(android.R.id.content) as View }
+    val myButton: Button by lazy { findViewById<Button>(R.id.button) }
+    val rootView: View by lazy { findViewById<View>(android.R.id.content) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
