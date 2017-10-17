@@ -2,6 +2,7 @@ package info.adavis.sampleapp
 
 import info.adavis.sampleapp.Logger.log
 import io.reactivex.Observable
+import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import java.lang.Thread.sleep
 import java.util.concurrent.TimeUnit.SECONDS
@@ -59,6 +60,15 @@ fun main(args: Array<String>) {
     observable = ObservableCreate().create().subscribeOn(Schedulers.io())
     observable.subscribe { i -> log("item E: $i") }
     log("after")
+
+    observable = ObservableCreate().create()
+    observable.subscribe(
+            object: Consumer<Int> {
+                override fun accept(t: Int) {
+                    println("On Next: $t")
+                }
+            }
+                        )
 
     sleep(SECONDS.toMillis(1))
 

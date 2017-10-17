@@ -8,6 +8,7 @@ import info.adavis.sampleapp.data.Post
 import info.adavis.sampleapp.data.SampleAPI
 import info.adavis.sampleapp.data.User
 import io.reactivex.Flowable
+import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
