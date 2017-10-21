@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         applicationId "info.adavis.sampleapp"
@@ -22,13 +22,13 @@ android {
 }
 
 dependencies {
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.0'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.0'
-    androidTestImplementation 'com.android.support.test:runner:1.0.0'
-    androidTestImplementation 'com.android.support.test:rules:1.0.0'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test:rules:1.0.1'
 
-    implementation 'com.android.support:appcompat-v7:26.0.0'
-    implementation "com.android.support:design:26.0.0"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation "com.android.support:design:26.1.0"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     // Logging

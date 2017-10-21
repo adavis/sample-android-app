@@ -17,8 +17,8 @@ import timber.log.Timber
 
 class GrantPermissionsActivity : AppCompatActivity() {
 
-    val myButton: Button by lazy { findViewById<Button>(R.id.button) }
-    val rootView: View by lazy { findViewById<View>(android.R.id.content) }
+    private val myButton: Button by lazy { findViewById<Button>(R.id.button) }
+    private val rootView: View by lazy { findViewById<View>(android.R.id.content) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class GrantPermissionsActivity : AppCompatActivity() {
         myButton.setOnClickListener { attemptToMakeCall() }
     }
 
-    fun attemptToMakeCall(): Unit {
+    private fun attemptToMakeCall() {
         if (hasCallPhonePermission()) {
             makeCall()
         } else {
@@ -75,8 +75,8 @@ class GrantPermissionsActivity : AppCompatActivity() {
     }
 
     companion object {
-        private val PERMISSIONS_REQ_CODE = 1
-        private val PHONE_PERMISSION = Manifest.permission.CALL_PHONE
+        private const val PERMISSIONS_REQ_CODE = 1
+        private const val PHONE_PERMISSION = Manifest.permission.CALL_PHONE
 
         val PHONE_NUMBER: Uri = Uri.parse("tel:5551231234")
     }
